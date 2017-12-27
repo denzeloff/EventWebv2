@@ -16,21 +16,6 @@ import java.util.List;
 
 @WebServlet("/event")
 public class EventViewController extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // to jest pomoc jak bedziemy tworzyć zapisywanie do wydarzenia
-       /* User logged = (User) request.getSession().getAttribute("user");
-        if (logged != null) {
-            long eventId = Long.parseLong(request.getParameter("event_id"));
-            System.out.println(logged);
-            //sprawdzenie czy user jest juz zapisany
-            //Service zapisywania + model + dao
-            //ustawienie atrybutu sesji na zapisany true
-            //przekierowanie na inna strone
-            //zmiana strony pod wzgledem buttony zapisania
-            // response.sendRedirect(request.getContextPath());
-            request.getRequestDispatcher("WEB-INF/event.jsp").forward(request, response);*/
-
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         long eventId = Long.parseLong(request.getParameter("id"));

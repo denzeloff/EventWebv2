@@ -20,10 +20,10 @@ import java.util.Map;
 
 public class EventDAOImpl implements EventDAO {
     private static final String CREATE_EVENT = "INSERT INTO event(event_title,event_description,event_category,event_date,user_id,event_language,event_city,event_place,event_address,event_speakers,event_seats,event_date_time, event_date_hour)VALUES (:title, :description, :category, :timestamp, :user_id, :language, :city, :place, :address, :speakers, :seats, :date,:eventHour);";
-    private NamedParameterJdbcTemplate template;
     private static final String READ_ALL_EVENTS = "SELECT user.user_id, user_name, user_email, user_is_active, user_password, event_id, event_title, event_description, event_category, event_date, event_language, event_city, event_place, event_address,event_speakers,event_seats, event_date_time, event_date_hour FROM event LEFT JOIN user ON event.user_id=user.user_id;";
-
     private static final String READ_EVENT = "SELECT user.user_id, user_name, user_email, user_is_active, user_password, event_id, event_title, event_description, event_category, event_date, event_language, event_city, event_place, event_address,event_speakers,event_seats, event_date_time, event_date_hour FROM event LEFT JOIN user ON event.user_id=user.user_id WHERE event_id = :event_id;";
+    private static final String UPDATE_EVENT = "UPDATE event SET event_seats=:seats WHERE event_id=:event_id;";
+    private NamedParameterJdbcTemplate template;
 
     public EventDAOImpl() {
         template = new NamedParameterJdbcTemplate(ConnectionProvider.getDataSource());
@@ -71,8 +71,17 @@ public class EventDAOImpl implements EventDAO {
     }
 
     @Override
-    public boolean update(Event updateObject) {
-        return false;
+    public boolean update(Event event) {
+        boolean result = false;
+        Map<String,Object> paramMap=new HashMap<>();
+        paramMap.put("seats", event.getSeats());
+        paramMap.put("event_id", event.getId());
+        SqlParameterSource parameterSource = new MapSqlParameterSource(paramMap);
+        int update = template.update(UPDATE_EVENT,parameterSource);
+        if (update>0){
+            result=true;
+        }
+        return result;
     }
 
     @Override

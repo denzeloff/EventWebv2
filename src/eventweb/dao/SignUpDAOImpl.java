@@ -15,11 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 public class SignUpDAOImpl implements SignUpDAO {
-    private static final String CREATE_LIST = "INSERT INTO event_has_users(event_id, user_id) "
-            + "VALUES (:event_id, :user_id);";
-
+    private static final String CREATE_LIST = "INSERT INTO event_has_users(event_id, user_id) VALUES (:event_id, :user_id);";
     private static final String READ_ALL_USERS_BY_EVENT = "SELECT user.user_id, user_name, user_email FROM event_has_users LEFT JOIN user ON event_has_users.user_id=user.user_id WHERE event_id = :event_id;";
-
     private NamedParameterJdbcTemplate template;
 
     public SignUpDAOImpl() {

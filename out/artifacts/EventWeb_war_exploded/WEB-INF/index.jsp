@@ -22,10 +22,24 @@
 <c:if test="${not empty requestScope.events}">
 <c:forEach var="events" items="${requestScope.events}">
 <div class="container">     
-    <div class="row bs-callout bs-callout-primary">        
-        <div class="col col-md-1 col-sm-2"> Number of seats:          
-            <div class="well well-sm centered"> <c:out value="${events.seats}" /></div>       
-        </div>   
+    <div class="row bs-callout bs-callout-primary">
+            <%--  <c:if test="${events.seats > 0}">
+                  <div class="col col-md-1 col-sm-2"> Number of seats:          
+                      <div class="well well-sm centered"> <c:out value="${events.seats}" /></div>       
+                  </div> 
+              </c:if>--%>
+             <c:choose>
+                  <c:when test="${events.seats > 0}">
+                      <div class="col col-md-1 col-sm-2"> Number of seats:          
+                          <div class="well well-sm centered"> <c:out value="${events.seats}" /></div>       
+                      </div>  
+                       </c:when>
+                  <c:otherwise>
+                      <div class="col col-md-1 col-sm-2"> Number of seats:          
+                          <div class="well well-sm centered">no places </div>       
+                      </div>  
+                  </c:otherwise>
+              </c:choose>    
         <div class="col col-md-11 col-sm-10">
                       <h3 class="centered"><a href="${pageContext.request.contextPath}/event?id=${events.id}"><c:out value="${events.title}" /></a></h3>       
                       <p><c:out value="${events.description}" /></p>
@@ -35,7 +49,6 @@
                 <!-- <p><medium>Wyświetlono: 12 razy</medium></p>-->
             </h6>
             </div>
-            <button class="btn btn-default btn-lg">sign up for the event</button>
         </div>
     </div>
     </c:forEach>

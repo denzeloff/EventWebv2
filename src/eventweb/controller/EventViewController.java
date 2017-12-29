@@ -30,8 +30,19 @@ public class EventViewController extends HttpServlet {
         User logged = (User) request.getSession().getAttribute("user");
         if (logged != null) {
             request.setAttribute("user_id", logged.getId());
+            boolean signedUp = false;
+            if (userList != null) {
+                for (User x : userList) {
+                    if (logged.getId() == x.getId()) {
+                        signedUp = true;
+                        break;
+                    }
+                }
+            }
+            System.out.println(signedUp);
+            request.setAttribute("isSignedUp", signedUp);
+
         }
         request.getRequestDispatcher("WEB-INF/event.jsp").forward(request, response);
-
     }
 }

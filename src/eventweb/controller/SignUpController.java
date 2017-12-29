@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/signUp")
 public class SignUpController extends HttpServlet {
@@ -24,14 +25,19 @@ public class SignUpController extends HttpServlet {
             EventService eventService = new EventService();
             Event event = eventService.getEventById(event_id);
             SignUpService signUpService = new SignUpService();
-            signUpService.addList(event.getId(),logged.getId());
-            event.setSeats(event.getSeats()-1);
-            eventService.updateEvent(event);
-            resultOperation.append("succes");
-        }
-        else{
+            try {
+                signUpService.addList(event.getId(), logged.getId());
+                event.setSeats(event.getSeats() - 1);
+                eventService.updateEvent(event);
+                resultOperation.append("succes");
+            }catch (RuntimeException e){
+                System.out.println("jesyes juz zapisany");
+                resultOperation.append("fail");
+            }
+
+        } else {
             resultOperation.append("fail");
         }
-        response.sendRedirect(request.getContextPath() + "/event?id=" +  request.getParameter("id") + "&result=" + resultOperation.toString());
+        response.sendRedirect(request.getContextPath() + "/event?id=" + request.getParameter("id") + "&result=" + resultOperation.toString());
     }
 }

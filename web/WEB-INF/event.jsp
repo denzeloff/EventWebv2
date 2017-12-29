@@ -99,32 +99,41 @@
                         </tr>
                         </tbody>
                     </table>
-                    <c:if test="${user_id != null && event.user.id != user_id && event.seats > 0}">
-                        <a href="${pageContext.request.contextPath}/signUp?id=${event.id}"
-                           class="btn-default">Zapisz się!
-                        </a>
+                    <c:if test="${user_id != null && event.user.id != user_id && event.seats > 0 }">
+                        <c:if test="${not isSignedUp}">
+                            <a href="${pageContext.request.contextPath}/signUp?id=${event.id}"
+                               class="btn-default">Zapisz się!
+                            </a>
+                        </c:if>
+                        <c:if test="${isSignedUp==true}">
+                            Jestes już zapisany
+                        </c:if>
                     </c:if>
                 </div>
                 <c:choose>
                 <c:when test="${not empty users}">
-                    Lista zapisanych userów
+                    Lista zapisanych userów:
+                    <c:set var="count" value="1" scope="page"/>
                     <c:forEach var="user" items="${users}">
                         <table class="table table-striped table-hover">
                             <tbody>
                             <tr>
-                                <th> Username</th>
+                                <th> <c:out value="${count}"/></th>
                                 <td>
                                     <h4><c:out value="${user.username}"/></h4>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                        <c:set var="count" value="${count + 1}" scope="page"/>
                     </c:forEach>
                      </c:when>
                 <c:otherwise>
                     NIKT SIE NIE ZAPISAL XDDDDD
                 </c:otherwise>
                 </c:choose>
+
+
             </div>
         </article>
     </div>

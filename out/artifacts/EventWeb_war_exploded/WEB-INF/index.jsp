@@ -23,11 +23,6 @@
 <c:forEach var="events" items="${requestScope.events}">
 <div class="container">     
     <div class="row bs-callout bs-callout-primary">
-            <%--  <c:if test="${events.seats > 0}">
-                  <div class="col col-md-1 col-sm-2"> Number of seats:          
-                      <div class="well well-sm centered"> <c:out value="${events.seats}" /></div>       
-                  </div> 
-              </c:if>--%>
              <c:choose>
                   <c:when test="${events.seats > 0}">
                       <div class="col col-md-1 col-sm-2"> Number of seats:          

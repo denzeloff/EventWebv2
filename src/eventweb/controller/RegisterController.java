@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 
 @WebServlet("/register")
@@ -23,11 +24,18 @@ public class RegisterController extends javax.servlet.http.HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        StringBuilder resultOperation = new StringBuilder();
         String username = request.getParameter("inputUsername");
         String password = request.getParameter("inputPassword");
         String email = request.getParameter("inputEmail");
         UserService userService = new UserService();
-        userService.addUser(username, email, password);
-        response.sendRedirect(request.getContextPath() + "/");
+        try {
+            userService.addUser(username, email, password);
+            resultOperation.append("success");
+            response.sendRedirect(request.getContextPath() + "/?result="+resultOperation.toString());
+        } catch (RuntimeException e) {
+            resultOperation.append("fail");
+            response.sendRedirect(request.getContextPath() + "/register?result="+resultOperation.toString());
+        }
     }
 }

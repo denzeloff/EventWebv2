@@ -31,7 +31,6 @@ public class SignUpController extends HttpServlet {
                 eventService.updateEvent(event);
                 resultOperation.append("succes");
             }catch (RuntimeException e){
-                System.out.println("jesyes juz zapisany");
                 resultOperation.append("fail");
             }
 

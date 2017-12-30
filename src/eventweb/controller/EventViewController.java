@@ -39,9 +39,7 @@ public class EventViewController extends HttpServlet {
                     }
                 }
             }
-            System.out.println(signedUp);
             request.setAttribute("isSignedUp", signedUp);
-
         }
         request.getRequestDispatcher("WEB-INF/event.jsp").forward(request, response);
     }

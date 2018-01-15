@@ -100,12 +100,19 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row d-flex justify-content-end">
+                <div class="row ">
+                    <div class="button-style">
                     <c:if test="${user_id != null && event.user.id != user_id && event.seats > 0}">
-                        <a href="${pageContext.request.contextPath}/signUp?id=${event.id}"
-                           class="btn-default sign-button">Sign up for the event
-                        </a>
+                        <c:if test="${not isSignedUp}">
+                            <a href="${pageContext.request.contextPath}/signUp?id=${event.id}"
+                               class="btn-default sign-button">Sign up for the event
+                            </a>
+                        </c:if>
+                        <c:if test="${isSignedUp == true}">
+                            <p>You are already signed up for this event</p>
+                        </c:if>
                     </c:if>
+                    </div>
                 </div>
 
                 <hr>

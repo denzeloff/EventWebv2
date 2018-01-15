@@ -29,7 +29,7 @@ a {
 /* colors */ 
 
 a,
-.denz,
+.denz
 {
     color: #769BB2;
 }
@@ -120,6 +120,7 @@ header {
     position: absolute;
     right: 20px;
     top: 0;
+    width: 400px;
 }
 /*
 .nav-container {
@@ -171,13 +172,13 @@ header {
     //color: #769BB2;
 }
 
+
 .event-section h2 {
     padding: 50px 0 20px 10px;
 }
 
 .event-col {
-    border-top: 2px dotted #769BB2;
-    margin: 0 auto;
+    border-top: 1px dotted #769BB2;
     padding: 20px 0 20px;
 }
 
@@ -202,6 +203,14 @@ header {
     text-transform: uppercase;
 }
 
+.button-style {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
 .sign-button {
     width: 200px;
     border: 2px solid #CCCB87;
@@ -209,6 +218,8 @@ header {
     padding: 1%;
     text-align: center;
 }
+
+
 
 /* LIST OF USRES */
 

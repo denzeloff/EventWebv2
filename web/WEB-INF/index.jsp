@@ -23,12 +23,12 @@
 
 <section class="event-section">
     <div class="row">
-        <div class="col col-lg-12 col-md-12">
+        <div class="col col-lg-12 col-md-12 all-events-col">
             <h2>Future Events</h2>
 
             <c:if test="${not empty requestScope.events}">
                 <c:forEach var="events" items="${requestScope.events}">
-                    <div class="col col-md-10 col-sm-10 event-col">
+                    <div class="col col-md-offset-1 col-lg-offset-1 col-md-10 col-sm-12 event-col">
                         <div class="title-part">
                             <h3 class="event-h3 not-booked"> <a href="${pageContext.request.contextPath}/event?id=${events.id}"> <c:out value="${events.title}" /> </a> </h3> 
                             <c:choose>

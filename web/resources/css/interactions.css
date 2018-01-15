@@ -1,0 +1,39 @@
+a:hover {
+    text-decoration: none;
+}
+
+.sign-button {
+    transition: opacity .4s, background-color .4s;
+    
+}
+
+.sign-button:hover {
+    opacity: .5;
+    background-color: #C2E8FF;
+    color: #B2B27F;
+
+}
+
+a {
+    transition: color .4s;
+}
+
+a:hover {
+   color: #B2B27F;
+}
+
+.not-booked a:hover {
+    color: #FFA883;
+    border-bottom: 2px solid #FFA883;
+}
+.booked a:hover {
+    border-bottom: 2px solid #B2B27F;
+}
+
+.btn {
+    transition: opacity .4s;
+}
+
+.btn:hover {
+    opacity: .8;
+}

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <footer class="footer">
-    <div class="container">
-        <p class="navbar-text">EventWeb developed by denzeloff</p>
+    <div class="footer-container">
+        <p class="footer-text"><strong>EventWeb</strong> developed by <span class="denz">denzeloff</span></p>
     </div>
 </footer>

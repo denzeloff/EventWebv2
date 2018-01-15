@@ -1,26 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <a href="${pageContext.request.contextPath}/" class="navbar-brand">EventWeb</a>
-        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-            <span class="glyphicon glyphicon-list"></span>
-        </button>
-        <div class="collapse navbar-collapse navHeaderCollapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="${pageContext.request.contextPath}/">Events</a></li>
-                <li><a href="${pageContext.request.contextPath}/add">Create Event</a></li>
-                <c:choose>
-                    <c:when test ="${not empty sessionScope.user}">
-                        <li><a href="${pageContext.request.contextPath}/logout">Log out</a></li>
-                    </c:when>
-                    <c:otherwise>
-                        <li><a href="${pageContext.request.contextPath}/login">Log in</a></li>
-                        <li><a href="${pageContext.request.contextPath}/register">Sign up</a></li>
-                    </c:otherwise>
-                </c:choose>
-            </ul>
+<header>
+    <div class="header-container">
+        <div class="logo">
+         <a href="${pageContext.request.contextPath}/"><span class="logo-initials">E</span>vent<span class="logo-initials">W</span>eb</a>
         </div>
+    <div class="nav-container">
+    <nav class="menu">
+        <ul>
+            <li><a href="${pageContext.request.contextPath}/">Events</a></li>
+            <li><a href="${pageContext.request.contextPath}/add">Create Event</a></li>
+            <c:choose>
+                 <c:when test ="${not empty sessionScope.user}">
+                       <li><a href="${pageContext.request.contextPath}/logout">Log out</a></li>
+                 </c:when>
+            <c:otherwise>
+                <li><a href="${pageContext.request.contextPath}/login">Log in</a></li>
+                <li><a href="${pageContext.request.contextPath}/register">Sign up</a></li>
+            </c:otherwise>
+            </c:choose>
+        </ul>
+    </nav>
     </div>
-</nav>
+    </div>
+</header>

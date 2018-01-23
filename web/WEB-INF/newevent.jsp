@@ -11,9 +11,11 @@
 <jsp:include page="fragments/head.jspf"/>
 <body>
 <jsp:include page="fragments/navbar.jspf" />
+<div class="img-container sm-img"> </div>
+
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-6 col-6 col-xl-6 ">
+        <form class="col col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8 col-sm-12 ">
             <h3>Insert data in every form field to add a new event</h3>
             <form class="form-signin" method="post" action="add">
                 <div class="form-group">
@@ -72,11 +74,14 @@
                     <label for="event-description">Event Description</label>
                     <textarea name="inputDescription" class="form-control" id="event-description" rows="3" required></textarea>
                 </div>
-                <div class="row d-flex justify-content-end">
-                    <button type="submit" class="btn btn-outline-success">Save</button>
+
+                <div class="button-style">
+                    <div class="row d-flex justify-content-end">
+                        <button type="submit" class="btn-default sign-button">Save</button>
+                    </div>
                 </div>
             </form>
-        </div>
+            </form>
     </div>
 </div>
 <jsp:include page="fragments/footer.jspf" />
